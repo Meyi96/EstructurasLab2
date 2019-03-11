@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="600.0" style="-fx-background-color: #669cde;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="600.0" style="-fx-background-color: #669cde;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SimulatorBibliotecaController">
    <children>
       <TextField fx:id="numberCashRegister" disable="true" layoutX="125.0" layoutY="54.0" prefHeight="36.0" prefWidth="50.0" promptText="#Cajas" />
       <Label layoutX="203.0" layoutY="8.0" text="Simulador biblioteca" textFill="#c6c6c6">
