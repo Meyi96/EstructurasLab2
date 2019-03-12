@@ -1,10 +1,14 @@
 package MyEstructures;
 
-public class Heap<V> implements MyHeap<V>{
+import java.util.Arrays;
+
+public class Heap<V extends Comparable<V>> implements MyHeap<V>{
 	protected Object elements[];
 	public int size;
-	private int maxSize = 1000001;
+	private int maxSize = 101;
+	
 	// true Max - false Min
+	
 	protected boolean type;
 	
 	public Heap (boolean Type) {
@@ -21,28 +25,44 @@ public class Heap<V> implements MyHeap<V>{
 		}else {
 			elements[size] = element;
 			maxHeapifyUp(size);
+			size++;
 		}
-		
 	}
 	
 
 	private void maxHeapifyUp(int size2) {
-		if((int)(elements[size2]) > (int)(elements[getParent(size2)])) {
-			V aux = (V) elements[size2];
-			elements[size2] = elements[getParent(size2)];
-			elements[getParent(size2)] = aux;
-			maxHeapifyUp(getParent(size2));
+		if(getParent(size2) > 0) {
+			if( 0 < ((V)elements[size2]).compareTo((V)elements[getParent(size2)] ) ) {
+				
+				V aux = (V) elements[size2];
+				elements[size2] = elements[getParent(size2)];
+				elements[getParent(size2)] = aux;
+				maxHeapifyUp(getParent(size2));
+			}else {
+				maxHeapifyDown(size2);
+			}
 		}else {
 			maxHeapifyDown(size2);
 		}
 	}
 	
 	private void maxHeapifyDown(int size2) {
-		double right = (double)(elements[getRight(size2)]);
-		double left = (double)(elements[getLeft(size2)]);
-		double winner = 0;
+		V right = (V)(elements[getRight(size2)]);
+		V left = (V)(elements[getLeft(size2)]);
+		
+		
+		V winner = null;		
 		int dir = 0;
-		if(right > left) {
+		
+		if(right == null && left == null) {
+			winner = null;
+		}else if(right == null) {
+			winner = left;
+			dir = getLeft(size2);
+		}else if(left == null) {
+			winner = right;
+			dir = getRight(size2);
+		}else if(right.compareTo(left) > 0) {
 			winner = right;
 			dir = getRight(size2);
 		}else {
@@ -50,10 +70,10 @@ public class Heap<V> implements MyHeap<V>{
 			dir = getLeft(size2);
 		}
 		
-		if((double)(elements[size2]) < winner) {
+		if( winner!= null && ((V)(elements[size2])).compareTo(winner) < 0) {
 			V aux = (V) elements[size2];
 			elements[size2] = elements[dir];
-			elements[getParent(size2)] = aux;
+			elements[dir] = aux;
 			maxHeapifyDown(dir);
 		}
 	}	
@@ -72,12 +92,14 @@ public class Heap<V> implements MyHeap<V>{
 	
 	
 	@Override
-	public V obtain(V element) {
+	public V obtain() {
+
+		--size;
 		V out = (V)elements[1];
 		elements[1] = elements[size];
-		elements[size] = Double.MIN_VALUE;
-		size--;
-		maxHeapifyUp(1);
+		elements[size] = null;
+		maxHeapifyDown(1);
+
 		return out;
 		
 	}

@@ -6,7 +6,7 @@ import MyEstructures.Queue;
 
 public class Library {
 	private Queue<Client> staringLine = new Queue<>();
-	private PriorityQueue<Client> payLine = new PriorityQueue<>();
+	private PriorityQueue<Client> payLine = new PriorityQueue<>(true);
 	private HashMap<Book,Integer> catalog = new HashMap<>();
 	private Queue<Client> payingCashier = new Queue<>();
 	private int cashierCapacity;
