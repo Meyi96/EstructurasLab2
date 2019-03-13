@@ -92,6 +92,36 @@ class Estructures_test {
 		}else {
 			fail("Me la jugue");
 		}
+		
+		if(HM.get(7) == null) {
+			assertTrue(true);
+		}else {
+			fail("Me la jugue");
+		}
+	}
+	
+	@Test
+	void TestHashMap2() {
+		HashMap<Integer,String> HM = new HashMap<>();
+		HM.put(2, "LOL");
+		HM.put(4, "LOL2");
+		HM.put(5, "LOL4");
+		if(HM.get(2) == "LOL") {
+			assertTrue(true);
+		}else {
+			fail("Me la jugue");
+		}
+		if(HM.get(5) == "LOL4") {
+			assertTrue(true);
+		}else {
+			fail("Me la jugue");
+		}
+		
+		if(HM.get(7) == null) {
+			assertTrue(true);
+		}else {
+			fail("Me la jugue");
+		}
 	}
 
 	@Test

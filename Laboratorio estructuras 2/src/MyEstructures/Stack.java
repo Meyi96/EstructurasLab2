@@ -2,15 +2,18 @@ package MyEstructures;
 
 public class Stack<E> implements MyStack<E>{
 	
-	Node<E> first;
-	Node<E> Last;
+	private Node<E> first;
+	private Node<E> Last;
+	private int size;
 	
 	public Stack() {
 		first = null;
+		size = 0;
 	}
 
 	@Override
 	public void push(E obj) {
+		size++;
 		if(first != null) {
 			Node <E> c = new Node<E>(obj);
 			c.addBefore(first);
@@ -23,6 +26,7 @@ public class Stack<E> implements MyStack<E>{
 
 	@Override
 	public E pop() {
+		size--;
 		if(first != null) {
 			E ref = (E) first.getInfo();
 			first = first.before;
@@ -42,6 +46,8 @@ public class Stack<E> implements MyStack<E>{
 		}
 	}
 
-
+	public int getSize() {
+		return size;
+	}
 
 }

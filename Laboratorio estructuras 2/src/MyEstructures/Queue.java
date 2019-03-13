@@ -2,8 +2,9 @@ package MyEstructures;
 
 public class Queue<E> implements MyQueue<E>{
 	
-	Node<E> first;
-	Node<E> Last;
+	private Node<E> first;
+	private Node<E> Last;
+	private int size;
 	
 	public Queue() {
 		first = null;
@@ -12,6 +13,7 @@ public class Queue<E> implements MyQueue<E>{
 	
 	@Override
 	public void offer(E obj) {
+		size++;
 		if(Last != null && first != null) {
 			Node<E> ref= new Node<E>(obj);
 			Last.addBefore(ref);
@@ -30,6 +32,7 @@ public class Queue<E> implements MyQueue<E>{
 
 	@Override
 	public E poll() {
+		size--;
 		if(first == null && Last == null) {
 			return null;
 		}
@@ -65,4 +68,7 @@ public class Queue<E> implements MyQueue<E>{
 		return null;
 	}
 
+	public int getSize() {
+		return size;
+	}
 }

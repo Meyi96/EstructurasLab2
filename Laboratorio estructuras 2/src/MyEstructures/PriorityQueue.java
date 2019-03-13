@@ -21,6 +21,10 @@ public class PriorityQueue<V extends Comparable<V>> implements MyQueue<V>{
 	public V peek() {
 		return elements.getTop();
 	}
+	
+	public int getSize() {
+		return elements.getSize();
+	}
 
 }
 

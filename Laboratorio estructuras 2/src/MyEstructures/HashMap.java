@@ -3,10 +3,12 @@ import java.lang.System;
 
 public class HashMap<K,V> implements MyHashMap<K, V>{
 	
-	private Object container[] = new Object[20];
+	private Object container[] = new Object[2000000];
+	int size;
 	
 	@Override
 	public void put(K key, V value) {
+		size++;
 		int P = (System.identityHashCode(key) % container.length);
 		int c = VerifyCollisions(P);
 		container[c] = new NodoHash<K,V>(key,value);
@@ -29,7 +31,9 @@ public class HashMap<K,V> implements MyHashMap<K, V>{
 		while(container[a] != null && ((NodoHash)container[a]).getActualkey() != key){
 			a = (java.util.Objects.hash(container[a], a)%container.length);
 		}
-		System.out.println("Obtuve" + " " + a);
+		if(container[a] == null) {
+			return null;
+		}
 		return (V)((NodoHash)container[a]).getValue();
 	}
 
@@ -41,7 +45,6 @@ public class HashMap<K,V> implements MyHashMap<K, V>{
 		while(container[a] != null && ((NodoHash)container[a]).getActualkey() != key){
 			a = (java.util.Objects.hash(container[a], a)%container.length);
 		}
-		System.out.println("Obtuve" + " " + a);
 		
 		if(container[a] != null) {
 			return false;
@@ -52,14 +55,39 @@ public class HashMap<K,V> implements MyHashMap<K, V>{
 
 	@Override
 	public boolean delete(K key) {
-		// TODO Auto-generated method stub
-		return false;
+		size--;
+		int a = System.identityHashCode(key) % container.length;
+		while(container[a] != null && ((NodoHash)container[a]).getActualkey() != key){
+			a = (java.util.Objects.hash(container[a], a)%container.length);
+		}
+		if(container[a] != null) {
+			container[a] = null;
+			return true;
+		}else {
+			return false;
+		}
+		
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
+		if(size == 0) {
+			return true;
+		}
 		return false;
+	}
+
+	@Override
+	public void changeValue(K key, V value) {
+		int a = System.identityHashCode(key) % container.length;
+		while(container[a] != null && ((NodoHash)container[a]).getActualkey() != key){
+			a = (java.util.Objects.hash(container[a], a)%container.length);
+		}
+		
+		if(container[a] != null) {
+			container[a] = value;
+		}
+		
 	}
 
 }

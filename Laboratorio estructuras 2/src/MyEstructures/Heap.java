@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class Heap<V extends Comparable<V>> implements MyHeap<V>{
 	protected Object elements[];
-	public int size;
-	private int maxSize = 101;
+	private int size;
+	private int maxSize = 100;
 	
 	// true Max - false Min
 	
@@ -13,19 +13,20 @@ public class Heap<V extends Comparable<V>> implements MyHeap<V>{
 	
 	public Heap (boolean Type) {
 		elements = new Object[maxSize];
-		size = 1;
+		size = 0;
 		type =  Type;
 	}
 
 	@Override
 	public void add(V element) {
-		if(size == 1) {
+		System.out.println(Arrays.toString(elements));
+		if(size == 0) {
 			elements[1] = element;
 			size++;
 		}else {
+			size++;
 			elements[size] = element;
 			maxHeapifyUp(size);
-			size++;
 		}
 	}
 	
@@ -93,13 +94,11 @@ public class Heap<V extends Comparable<V>> implements MyHeap<V>{
 	
 	@Override
 	public V obtain() {
-
-		--size;
 		V out = (V)elements[1];
 		elements[1] = elements[size];
 		elements[size] = null;
 		maxHeapifyDown(1);
-
+		--size;
 		return out;
 		
 	}
