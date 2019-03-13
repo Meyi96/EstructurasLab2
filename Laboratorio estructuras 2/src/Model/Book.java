@@ -45,9 +45,9 @@ public class Book implements Comparable<Book> {
 	}
 	@Override
 	public int compareTo(Book o) {
-		if(depth > o.getDepth()) {
+		if(depth < o.getDepth()) {
 			return 1;
-		}else if(depth < o.getDepth()){ 
+		}else if(depth > o.getDepth()){ 
 			return -1;
 		}else {
 			if(height < o.getHeight()) {

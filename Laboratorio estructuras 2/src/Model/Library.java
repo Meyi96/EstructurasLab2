@@ -49,16 +49,36 @@ public class Library {
 	private void startPaying() {
 		Client Cashiers[] = new Client [cashierCapacity];
 		boolean keepG = true;
-		
-		while(keepG) {
+		int minutes[] = new int[cashierCapacity];
+		int a = 0;
+		while(keepG && a>1) {
 			keepG = false;
+			a++;
 			for (int i = 0; i < Cashiers.length; i++) {
 				if(Cashiers[i] == null) {
 					Cashiers[i] = payLine.poll();
+					minutes[i] = Cashiers[i].getBooks().getSize(); 
 				}else{
-					
+					if(minutes[i] - 1 == 0) {
+						payingOut.offer(Cashiers[i]);
+						Cashiers[i] = null;
+					}else {
+						minutes[i] = minutes[i]-1;
+					}
+					keepG = true;
 				}
 			}
 		}
+		
+	}
+
+	public String Facture() {
+		StringBuilder out = new StringBuilder();
+		while(payingOut.getSize() != 0) {
+			Client actual = payingOut.poll();
+			String bill = actual.getBill();
+			out.append(actual.getiD() + bill);
+		}
+		return out.toString();
 	}
 }

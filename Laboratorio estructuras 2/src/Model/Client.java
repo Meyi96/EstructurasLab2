@@ -5,14 +5,16 @@ import MyEstructures.Queue;
 import MyEstructures.Stack;
 
 public class Client implements Comparable<Client>{
-	private PriorityQueue<Book> books = new PriorityQueue<>(true);
-	private Stack<String> bill = new Stack<>(); 
+	private PriorityQueue<Book> books;
+	private String bill; 
 	private int iD;
 	private int timeW;
 	
 	
 	
 	public Client(PriorityQueue<Book> books, int iD, int timeW) {
+		books = new PriorityQueue<>(true);
+		bill = "";
 		this.books = books;
 		this.iD = iD;
 		this.timeW = timeW;
@@ -50,7 +52,17 @@ public class Client implements Comparable<Client>{
 	
 	public String getBill()
 	{
-		return null;
+		String out = "";
+		int total = 0;
+		StringBuilder helper = new StringBuilder();
+		while(books.getSize() != 0) {
+			Book actual = books.poll();
+			total += (int)actual.getPrice();
+			 helper.append(actual.getISBN() + " ");
+		}
+		out = " " + String.valueOf(total) + "\n" + helper.toString();
+		
+		return out;
 	}	
 	
 }
