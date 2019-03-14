@@ -13,9 +13,8 @@ public class Client implements Comparable<Client>{
 	
 	
 	public Client(PriorityQueue<Book> books, int iD, int timeW) {
-		books = new PriorityQueue<>(true);
-		bill = "";
 		this.books = books;
+		bill = "";
 		this.iD = iD;
 		this.timeW = timeW;
 	}
@@ -60,7 +59,7 @@ public class Client implements Comparable<Client>{
 			total += (int)actual.getPrice();
 			 helper.append(actual.getISBN() + " ");
 		}
-		out = " " + String.valueOf(total) + "\n" + helper.toString();
+		out = " " + String.valueOf(total) + "\n" + helper.toString() + "\n";
 		
 		return out;
 	}	

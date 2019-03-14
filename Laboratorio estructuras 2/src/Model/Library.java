@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Arrays;
+
 import MyEstructures.HashMap;
 import MyEstructures.PriorityQueue;
 import MyEstructures.Queue;
@@ -31,17 +33,19 @@ public class Library {
 			while(entering.getBooks().getSize() != 0) {
 				String firstBookName = entering.getBooks().poll().getISBN();
 				Book firstBook = catalog.get(firstBookName);
+				System.out.print(" FOUND: "+ firstBookName + "  " + firstBook + " ");
 				if(firstBook.getAmount() > 0) {
 					firstBook.setAmount(firstBook.getAmount()-1);
 					catalog.changeValue(firstBookName,firstBook);
 					auxiliar.offer(firstBook);
 				}
-
+				System.out.println();
 				entering.setTimeW(entering.getTimeW()+1);
 			}
 			
 			entering.setBooks(auxiliar);
 			payLine.offer(entering);
+			
 		}
 		startPaying();
 	}
@@ -51,15 +55,17 @@ public class Library {
 		boolean keepG = true;
 		int minutes[] = new int[cashierCapacity];
 		int a = 0;
-		while(keepG && a>1) {
+		while(keepG || a<=1) {
 			keepG = false;
 			a++;
 			for (int i = 0; i < Cashiers.length; i++) {
 				if(Cashiers[i] == null) {
-					Cashiers[i] = payLine.poll();
-					minutes[i] = Cashiers[i].getBooks().getSize(); 
+					if(payLine.getSize() > 0) {
+						Cashiers[i] = payLine.poll();
+						minutes[i] = Cashiers[i].getBooks().getSize(); 
+					}
 				}else{
-					if(minutes[i] - 1 == 0) {
+					if(minutes[i] - 1 <= 0) {
 						payingOut.offer(Cashiers[i]);
 						Cashiers[i] = null;
 					}else {
@@ -68,6 +74,9 @@ public class Library {
 					keepG = true;
 				}
 			}
+//			System.out.println("Out 1 "+ Arrays.toString(Cashiers));
+//			System.out.println("Out 2 "+ Arrays.toString(minutes));
+//			System.out.println("No Stop");
 		}
 		
 	}

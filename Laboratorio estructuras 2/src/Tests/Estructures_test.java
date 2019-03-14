@@ -102,22 +102,22 @@ class Estructures_test {
 	
 	@Test
 	void TestHashMap2() {
-		HashMap<Integer,String> HM = new HashMap<>();
-		HM.put(2, "LOL");
-		HM.put(4, "LOL2");
-		HM.put(5, "LOL4");
-		if(HM.get(2) == "LOL") {
+		HashMap<String,String> HM = new HashMap<>();
+		HM.put("He", "LOL");
+		HM.put("HE", "LOL2");
+		HM.put("LOL", "LOL4");
+		if(HM.get(new String("He")).equals("LOL")) {
 			assertTrue(true);
 		}else {
 			fail("Me la jugue");
 		}
-		if(HM.get(5) == "LOL4") {
+		if(HM.get("HE").equals("LOL2")) {
 			assertTrue(true);
 		}else {
 			fail("Me la jugue");
 		}
 		
-		if(HM.get(7) == null) {
+		if(HM.get("LOL").equals("LOL4")) {
 			assertTrue(true);
 		}else {
 			fail("Me la jugue");

@@ -8,11 +8,12 @@ public class Book implements Comparable<Book> {
 	private int depth;
 	private int amount;
 	
-	public Book(String ISBN, double price, int height,int depth) {
+	public Book(String ISBN, double price, int height,int depth,int amount) {
 		this.ISBN = ISBN;
 		this.price = price;
 		this.height = height;
 		this.depth = depth;
+		this.amount = amount;
 	}
 	public String getISBN() {
 		return ISBN;
