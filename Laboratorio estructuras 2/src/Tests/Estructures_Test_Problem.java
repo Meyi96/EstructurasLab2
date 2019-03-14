@@ -50,7 +50,7 @@ class Estructures_Test_Problem {
 	}
 	
 	void setup6() {
-		books2 = new Queue<>();
+		Sbooks = new Stack<>();
 	}
 	
 	@Test
@@ -289,21 +289,88 @@ class Estructures_Test_Problem {
 	}
 	
 	@Test
-	void test13() {
-		setup6();
-		
-	}
-	
-	@Test
 	void test14() {
 		setup6();
+		Sbooks.push(new Book(String.valueOf(((int)(Math.random()*5)))+"a", 1000, 0, 0 ,0));
 		
+		if(Sbooks.getSize() != 1 && Sbooks.top().getAmount() != 0) {
+			fail("Did not add correctly");
+		}else {
+			assertTrue(true);
+		}
+		
+		if(Sbooks.pop() == null) {
+			fail("Did not extract correctly");
+		}else {
+			assertTrue(true);
+		}
+		
+		if(Sbooks.pop() != null) {
+			fail("Did not extract correctly");
+		}else {
+			assertTrue(true);
+		}
 	}
+	
+	
+	
+	
+	@Test
+	void test13() {
+		setup6();
+		int a = Sbooks.getSize();
+		Sbooks.push(new Book("2",0.0,0,0,0));
+		if(Sbooks.getSize() != a+1) {
+			fail("Did not add");
+		}else {
+			assertTrue(true);
+		}
+		
+		Sbooks.push(new Book("2",0.0,0,-1,-1));
+		
+		if(Sbooks.pop().getAmount() != -1) {
+			fail("Did not add correctly");
+		}else {
+			assertTrue(true);
+		}
+		
+		Sbooks.push(new Book("2",0.0,0,-1,-2));
+		
+		if(Sbooks.pop().getAmount() != -2) {
+			fail("Did not add correctly");
+		}else {
+			assertTrue(true);
+		}
+	}
+	
+	
 	
 	@Test
 	void test15() {
 		setup6();
+		int a = Sbooks.getSize();
+		Sbooks.push(new Book("2",0.0,0,0,0));
+		if(Sbooks.getSize() != a+1) {
+			fail("Did not add");
+		}else {
+			assertTrue(true);
+		}
 		
+		Sbooks.push(new Book("2",0.0,0,-1,-1));
+		
+		if(Sbooks.top().getAmount() != -1) {
+			fail("Did not add correctly");
+		}else {
+			assertTrue(true);
+		}
+		
+		Sbooks.push(new Book("2",0.0,0,-1,-2));
+		
+		if(Sbooks.top().getAmount() != -2) {
+			fail("Did not add correctly");
+		}else {
+			assertTrue(true);
+		}
 	}
 
 }
