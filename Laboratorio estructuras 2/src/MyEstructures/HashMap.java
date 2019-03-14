@@ -46,7 +46,7 @@ public class HashMap<K,V> implements MyHashMap<K, V>{
 			a = (java.util.Objects.hash(2, a)%container.length);
 		}
 		
-		if(container[a] != null) {
+		if(container[a] == null) {
 			return false;
 		}else{
 			return true;
@@ -83,10 +83,8 @@ public class HashMap<K,V> implements MyHashMap<K, V>{
 		while(container[a] != null && !((NodoHash)container[a]).getActualkey().equals(key)){
 			a = (java.util.Objects.hash(2, a)%container.length);
 		}
+		container[a] = new NodoHash<K, V>(key, value);
 		
-		if(container[a] != null) {
-			container[a] = new NodoHash<K, V>(key, value);
-		}
 		
 	}
 

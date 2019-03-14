@@ -10,7 +10,7 @@ import MyEstructures.Heap;
 import MyEstructures.Queue;
 import MyEstructures.Stack;
 
-class Estructures_test {
+class Estructures_test_General {
 
 	@Test
 	void testQueue1() {
