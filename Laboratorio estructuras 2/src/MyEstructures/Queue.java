@@ -71,4 +71,7 @@ public class Queue<E> implements MyQueue<E>{
 	public int getSize() {
 		return size;
 	}
+	public boolean empty() {
+		return first==null;
+	}
 }

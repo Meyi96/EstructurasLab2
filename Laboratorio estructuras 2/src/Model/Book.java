@@ -59,6 +59,10 @@ public class Book implements Comparable<Book> {
 		}
 		return 0;
 	}
+	 @Override
+	public java.lang.String toString() {
+		return ISBN;
+	}
 	
 	
 
