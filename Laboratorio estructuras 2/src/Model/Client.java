@@ -41,9 +41,9 @@ public class Client implements Comparable<Client>{
 
 	@Override
 	public int compareTo(Client o) {
-		if(timeW > o.getTimeW()) {
+		if(timeW < o.getTimeW()) {
 			return 1;
-		}else if(timeW < o.getTimeW()){
+		}else if(timeW > o.getTimeW()){
 			return -1;
 		}
 		return 0;

@@ -3,7 +3,7 @@ import java.lang.System;
 
 public class HashMap<K,V> implements MyHashMap<K, V>{
 	
-	private Object container[] = new Object[20];
+	private Object container[] = new Object[200];
 	int size;
 	
 	@Override
@@ -12,14 +12,14 @@ public class HashMap<K,V> implements MyHashMap<K, V>{
 		int P = ((key).hashCode() % container.length);
 		int c = VerifyCollisions(P);
 		container[c] = new NodoHash<K,V>(key,value);
-		System.out.println(container[c] + " " + c);
+//		System.out.println(container[c] + " " + c);
 	}
 	
 	//Double-Hashing 
 	private int VerifyCollisions(int p) {
 		int a = p;
 		while(container[a] != null){
-			System.out.println(a);
+//			System.out.println(a);
 			a = (java.util.Objects.hash(2, a)%container.length);
 		}
 		return a;

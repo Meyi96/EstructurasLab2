@@ -19,7 +19,7 @@ public class Heap<V extends Comparable<V>> implements MyHeap<V>{
 
 	@Override
 	public void add(V element) {
-		System.out.println(Arrays.toString(elements));
+//		System.out.println(Arrays.toString(elements));
 		if(size == 0) {
 			elements[1] = element;
 			size++;

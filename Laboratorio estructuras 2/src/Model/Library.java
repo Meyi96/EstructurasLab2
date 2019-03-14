@@ -33,13 +33,14 @@ public class Library {
 			while(entering.getBooks().getSize() != 0) {
 				String firstBookName = entering.getBooks().poll().getISBN();
 				Book firstBook = catalog.get(firstBookName);
-				System.out.print(" FOUND: "+ firstBookName + "  " + firstBook + " ");
-				if(firstBook.getAmount() > 0) {
+//				System.out.print(" FOUND: "+ firstBookName + "  " + firstBook + " ");
+				
+				if(firstBook != null && firstBook.getAmount() > 0) {
 					firstBook.setAmount(firstBook.getAmount()-1);
 					catalog.changeValue(firstBookName,firstBook);
 					auxiliar.offer(firstBook);
 				}
-				System.out.println();
+//				System.out.println();
 				entering.setTimeW(entering.getTimeW()+1);
 			}
 			
