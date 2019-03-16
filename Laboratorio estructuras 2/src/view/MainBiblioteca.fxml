@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="425.0" style="-fx-background-color: #669cde;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SimulatorBibliotecaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="348.0" prefWidth="425.0" style="-fx-background-color: #669cde;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SimulatorBibliotecaController">
    <children>
       <Label layoutX="116.0" text="Simulador biblioteca" textFill="#c6c6c6">
          <font>
@@ -22,5 +22,6 @@
       </Label>
       <TextArea fx:id="inputDate" layoutX="47.0" layoutY="68.0" prefHeight="135.0" prefWidth="331.0" promptText="Agregar datos" visible="false" />
       <Button fx:id="SimulationButton" layoutX="237.0" layoutY="209.0" mnemonicParsing="false" onAction="#goSimulationInputt" prefHeight="27.0" prefWidth="85.0" style="-fx-background-color: #669cde; -fx-border-color: #ffffff;" text="Simular" visible="false" />
+      <TextArea fx:id="result1" layoutX="113.0" layoutY="243.0" prefHeight="93.0" prefWidth="212.0" visible="false" />
    </children>
 </AnchorPane>

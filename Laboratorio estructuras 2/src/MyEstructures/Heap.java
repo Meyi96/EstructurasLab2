@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Heap<V extends Comparable<V>> implements MyHeap<V>{
 	protected Object elements[];
 	private int size;
-	private int maxSize = 100;
+	private int maxSize = 1000000;
 	
 	// true Max - false Min
 	

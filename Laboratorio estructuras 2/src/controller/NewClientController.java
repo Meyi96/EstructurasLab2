@@ -31,7 +31,7 @@ public class NewClientController implements Initializable {
     @FXML
     private ComboBox<String> books;
     private ArrayList<String> booksArray;
-
+    
     @FXML
     void addClient(ActionEvent event) throws IOException {
     	if(verificarId()) {
@@ -45,13 +45,11 @@ public class NewClientController implements Initializable {
         	windowCampo.show();
     	}
     }
-
     @FXML
     void cleanDates(ActionEvent event) {
     	ListBook.setText("");
     	searchData();
     }
-
     @FXML
     void goReturn(MouseEvent event) throws IOException {
     	FXMLLoader loader = new FXMLLoader();
@@ -62,7 +60,6 @@ public class NewClientController implements Initializable {
     	windowCampo.setScene(scene);
     	windowCampo.show();
     }
-    
     @FXML
     void goBooks(ActionEvent event) {
     	if(books.getSelectionModel().getSelectedIndex()!=-1) {
@@ -79,8 +76,6 @@ public class NewClientController implements Initializable {
     	books.getItems().clear();
     	books.getItems().addAll(booksArray);
     }
-
-
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		searchData();

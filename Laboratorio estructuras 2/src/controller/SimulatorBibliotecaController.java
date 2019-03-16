@@ -33,6 +33,8 @@ public class SimulatorBibliotecaController  implements Initializable{
     @FXML
     private TextArea result;
     @FXML
+    private TextArea result1;
+    @FXML
     private TextArea inputDate;
     @FXML
     private Button SimulationButton;
@@ -50,9 +52,9 @@ public class SimulatorBibliotecaController  implements Initializable{
     	windowCampo.setScene(scene);
     	windowCampo.show();
     }
-
     @FXML
-    void goSimulationInputt(ActionEvent event) {
+    void goSimulationInputt(ActionEvent event) throws IOException {
+    	result1.setVisible(true);
     	if(inputDate.getText().equals("")) {
     		try {
 				throw new InputNullException();
@@ -61,16 +63,14 @@ public class SimulatorBibliotecaController  implements Initializable{
 			}
     	}else {
     		Main.getReception().setRawData(inputDate.getText());
-    		Main.getReception().divideData();
+    		result1.setText(Main.getReception().otherData());
     	}
     }
-
     @FXML
     void inputButton(ActionEvent event) {
     	inputDate.setVisible(true);
     	SimulationButton.setVisible(true);
     }
-
     @FXML
     void createClient(ActionEvent event) throws IOException {
     	FXMLLoader loader = new FXMLLoader();
@@ -81,17 +81,15 @@ public class SimulatorBibliotecaController  implements Initializable{
     	windowCampo.setScene(scene);
     	windowCampo.show();
     }
-    
     @FXML
     void goSimulation(ActionEvent event) throws IOException {
     	if(isCashregister()) {
     		data += cashRegister+"\n"+readDate();
     		addClientsData();
     		Main.getReception().setRawData(data);
-    		System.out.println(data);
+    		result.setText(Main.getReception().otherData());
     	}
     }
-
 	@FXML
     void lessCashRegister(ActionEvent event) {
     	if(cashRegister>1) { 
@@ -99,7 +97,6 @@ public class SimulatorBibliotecaController  implements Initializable{
     		numberCashRegister.setText(cashRegister+"");
     	}
     }
-
     @FXML
     void moreCashRegister(ActionEvent event) {
     	if(cashRegister<10) { 
@@ -107,11 +104,10 @@ public class SimulatorBibliotecaController  implements Initializable{
     		numberCashRegister.setText(cashRegister+"");
     	}
     }
-
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		cashRegister = 0;
-		data = "1 \n";
+		data = "1\n";
 		searchClientsDada();
 	}
 	private boolean isCashregister() {
@@ -147,7 +143,6 @@ public class SimulatorBibliotecaController  implements Initializable{
 		}
 		return data;
 	}
-	
 	private void searchClientsDada() {
 		int nClients =1;
 		MyQueue<String> auxi = new Queue<String>();
