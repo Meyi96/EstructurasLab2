@@ -39,14 +39,14 @@ public class Reception {
 		String result = "";
 		int test =1;
 		while(!librarys.empty()) {
-			result += "prueba numero: "+ test +"\n"+ librarys.poll().Facture()+"\n"; 
+			result += "prueba número "+ test +":\n"+ librarys.poll().Facture()+"\n"; 
 			test++;
 		}
 		return result;
 	}
 	public String otherData() {
 		allData=rawData.split("\n");
-		testSimulation = Integer.parseInt(allData[0]);
+		testSimulation = Integer.parseInt(allData[0].trim());
 		index = 0;
 		for (int i = 0; i < testSimulation&& index< allData.length; i++) {
 			 divideShelf();
@@ -58,12 +58,12 @@ public class Reception {
 		return result();
 	}
 	private void divideShelf() {
-		cashRegister=Integer.parseInt(allData[++index]);
-		shelf = Integer.parseInt(allData[++index]);
+		cashRegister=Integer.parseInt(allData[++index].trim());
+		shelf = Integer.parseInt(allData[++index].trim());
 		for (int i = 0; i < shelf; i++) {
 			divideBooks(i+1);
 		}
-		int numberClients = Integer.parseInt(allData[++index]);
+		int numberClients = Integer.parseInt(allData[++index].trim());
 		for (int i = 0; i < numberClients; i++) {
 			addClients(i+1);
 		}

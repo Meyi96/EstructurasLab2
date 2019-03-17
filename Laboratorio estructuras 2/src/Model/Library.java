@@ -64,11 +64,13 @@ public class Library {
 					if(payLine.getSize() > 0) {
 						Cashiers[i] = payLine.poll();
 						minutes[i] = Cashiers[i].getBooks().getSize(); 
+						keepG = true;
 					}
 				}else{
 					if(minutes[i] - 1 <= 0) {
 						payingOut.offer(Cashiers[i]);
 						Cashiers[i] = null;
+						minutes[i] = 0;
 					}else {
 						minutes[i] = minutes[i]-1;
 					}
@@ -77,7 +79,7 @@ public class Library {
 			}
 //			System.out.println("Out 1 "+ Arrays.toString(Cashiers));
 //			System.out.println("Out 2 "+ Arrays.toString(minutes));
-//			System.out.println("No Stop");
+//			System.out.println("No Stop " + " " + keepG	+ " " + a);
 		}
 		
 	}
